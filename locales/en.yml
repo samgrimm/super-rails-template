@@ -1,0 +1,27 @@
+
+en:
+  languages: "Languages"
+  older: "Older >>"
+  newer: "<< Newer"
+  login: "Login"
+  register: "Register"
+  logout: "Logout"
+  back: "Back"
+  confirm: "Are you sure?"
+  back_to_top: "Back To Top"
+  hello: "Hello"
+  resend_instruction: "Resend confirmation instructions"
+  resend_unlock: "Resend unlock instructions"
+  shared:
+    nav:
+      home: "Home"
+      about: "About"
+      contact: "Contact"
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
