@@ -18,7 +18,7 @@ if yes?("Would you like to install Devise?")
   model_name = ask("What would you like the user model to be called? [user]")
   model_name = "user" if model_name.blank?
   generate "devise", model_name
-  directory "~/workspace/templates/RailsTemplates/app/views/en_devise", "app/views/devise"
+  directory "~/workspace/templates/RailsTemplates/app/views/devise_en", "app/views/devise"
 end
 
 remove_file  "app/assets/stylesheets/application.css"
@@ -79,6 +79,7 @@ after_bundle do
   rails_command("db:create")
   rails_command("db:migrate")
   git :init
+  append_to_file '.gitignore', '.env'
   git add: "."
   git commit: %Q{ -m 'Initial commit' }
   if yes?("Do you want to upload to a github repo?")
