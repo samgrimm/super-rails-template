@@ -1,14 +1,4 @@
-##SuperMegaUltra Rails App Generator Template!
 
-This app was created using the template located [here](link pending).
-
-###It has the following items pre-configured:
-* Bootstrap 4 and FontAwesome
-* Devise
-* SendGrid
-* friendly_id
-* gritter
-* i18n-tasks
 * Custom scaffold templates
 * Navbar partial and helpers
 
@@ -29,6 +19,7 @@ This app was created using the template located [here](link pending).
 * runs the first db:create and db:migrate
 * Create a static_pages controller with a home (directed to root_path) and an about page
 * Run the initial Git Commit command, so you start off great with git, and push to github all from the very first command
+* Deploy to heroku.
 
 ###To-dos after deployment
 
