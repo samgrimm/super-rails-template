@@ -1,8 +1,8 @@
-##SuperMegaUltra Rails App Generator Template!
+## SuperMegaUltra Rails App Generator Template!
 
 This app was created using the template located [here](link pending).
 
-###How to use it:
+### How to use it:
 
 * Copy or clone the repository
 * Make sure you have postgresql running already (you can install it from [this link](https://www.postgresql.org/download/macosx/))
@@ -10,7 +10,7 @@ This app was created using the template located [here](link pending).
 * Follow the prompts
 * When asked to overwrite files, say Yes (this will overwrite the original Rails generated files with the ones from this template)
 
-###It has the following items pre-configured:
+### It has the following items pre-configured:
 
 * Bootstrap 4 and FontAwesome
 * Devise
@@ -19,7 +19,7 @@ This app was created using the template located [here](link pending).
 * Custom scaffold templates
 * Navbar partial and helpers
 
-###What it will do:
+### What it will do:
 
 * Install the gems listed above and their dependencies
 * Configure RSPEC with Factory Girl, Warden, and database_cleaner
@@ -37,7 +37,7 @@ This app was created using the template located [here](link pending).
 * Create a static_pages controller with a home (directed to root_path) and an about page
 * Run the initial Git Commit command, so you start off great with git, and push to github all from the very first command
 
-###To-dos after deployment
+### To-dos after deployment
 
 * Make sure to configure email server with the correct url by pasting the following line into production.rb
 config.action_mailer.default_url_options = { :host => "<YourURLHere>" }
