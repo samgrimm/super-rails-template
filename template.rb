@@ -24,6 +24,10 @@ gem 'rails-i18n', '~> 5.0', '>= 5.0.3'
 #Start RSpec
 rails_command("generate rspec:install")
 
+local_path = ask "what is the path to the cloned RailsTemplate in your machine?"
+
+puts local_path
+
 #Running Devise
 if yes?("Would you like to install Devise?")
   gem 'devise', '~>4.2'
@@ -31,7 +35,7 @@ if yes?("Would you like to install Devise?")
   model_name = ask("What would you like the user model to be called? [user]")
   model_name = "user" if model_name.blank?
   generate "devise", model_name
-  directory "~/workspace/templates/RailsTemplates/app/views/devise", "app/views/devise"
+  directory "#{local_path}/app/views/devise", "app/views/devise"
 end
 
 #remove old files
@@ -46,30 +50,30 @@ remove_file  "app/views/layouts/application.html.erb"
 
 # add new files
 #locale and i18n
-directory "~/workspace/templates/RailsTemplates/locales", "config/locales"
-copy_file "~/workspace/templates/RailsTemplates/locales/devise.en.yml", "config/locales/devise.en.yml"
-copy_file "~/workspace/templates/RailsTemplates/locales/en.yml", "config/locales/en.yml"
-copy_file "~/workspace/templates/RailsTemplates/locales/devise.pt.yml", "config/locales/devise.pt.yml"
-copy_file "~/workspace/templates/RailsTemplates/locales/pt.yml", "config/locales/pt.yml"
-copy_file "~/workspace/templates/RailsTemplates/i18n.rb", "config/initializers/i18n.rb"
+directory "#{local_path}/locales", "config/locales"
+copy_file "#{local_path}/locales/devise.en.yml", "config/locales/devise.en.yml"
+copy_file "#{local_path}/locales/en.yml", "config/locales/en.yml"
+copy_file "#{local_path}/locales/devise.pt.yml", "config/locales/devise.pt.yml"
+copy_file "#{local_path}/locales/pt.yml", "config/locales/pt.yml"
+copy_file "#{local_path}/i18n.rb", "config/initializers/i18n.rb"
 
-copy_file  "~/workspace/templates/RailsTemplates/application_controller.rb","app/controllers/application_controller.rb"
-copy_file "~/workspace/templates/RailsTemplates/rails_helper.rb", "spec/rails_helper.rb"
-copy_file "~/workspace/templates/RailsTemplates/spec_helper.rb", "spec/spec_helper.rb"
-copy_file "~/workspace/templates/RailsTemplates/setup_mail.rb", "config/initializers/setup_mail.rb"
-copy_file "~/workspace/templates/RailsTemplates/application.js", "app/assets/javascripts/application.js"
-copy_file "~/workspace/templates/RailsTemplates/application.scss", "app/assets/stylesheets/application.scss"
-copy_file "~/workspace/templates/RailsTemplates/application_helper.rb", "app/helpers/application_helper.rb"
-copy_file "~/workspace/templates/RailsTemplates/application.html.erb", "app/views/layouts/application.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/nav.html.erb", "app/views/shared/_nav.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/index.html.erb", "lib/templates/erb/scaffold/index.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/show.html.erb", "lib/templates/erb/scaffold/show.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/edit.html.erb", "lib/templates/erb/scaffold/edit.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/new.html.erb", "lib/templates/erb/scaffold/new.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/_form.html.erb", "lib/templates/erb/scaffold/_form.html.erb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold/controller.rb", "lib/templates/rails/scaffold_controller/controller.rb"
-copy_file "~/workspace/templates/RailsTemplates/scaffold_generator.rb", "lib/rails/generators/erb/scaffold/scaffold_generator.rb"
-copy_file "~/workspace/templates/RailsTemplates/README.md", "README.md"
+copy_file "#{local_path}/application_controller.rb","app/controllers/application_controller.rb"
+copy_file "#{local_path}/rails_helper.rb", "spec/rails_helper.rb"
+copy_file "#{local_path}/spec_helper.rb", "spec/spec_helper.rb"
+copy_file "#{local_path}/setup_mail.rb", "config/initializers/setup_mail.rb"
+copy_file "#{local_path}/application.js", "app/assets/javascripts/application.js"
+copy_file "#{local_path}/application.scss", "app/assets/stylesheets/application.scss"
+copy_file "#{local_path}/application_helper.rb", "app/helpers/application_helper.rb"
+copy_file "#{local_path}/application.html.erb", "app/views/layouts/application.html.erb"
+copy_file "#{local_path}/nav.html.erb", "app/views/shared/_nav.html.erb"
+copy_file "#{local_path}/scaffold/index.html.erb", "lib/templates/erb/scaffold/index.html.erb"
+copy_file "#{local_path}/scaffold/show.html.erb", "lib/templates/erb/scaffold/show.html.erb"
+copy_file "#{local_path}/scaffold/edit.html.erb", "lib/templates/erb/scaffold/edit.html.erb"
+copy_file "#{local_path}/scaffold/new.html.erb", "lib/templates/erb/scaffold/new.html.erb"
+copy_file "#{local_path}/scaffold/_form.html.erb", "lib/templates/erb/scaffold/_form.html.erb"
+copy_file "#{local_path}/scaffold/controller.rb", "lib/templates/rails/scaffold_controller/controller.rb"
+copy_file "#{local_path}/scaffold_generator.rb", "lib/rails/generators/erb/scaffold/scaffold_generator.rb"
+copy_file "#{local_path}/README.md", "README.md"
 
 application "config.generators do |g|
       g.orm :active_record

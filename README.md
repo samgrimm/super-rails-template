@@ -18,6 +18,7 @@ This app was created using the template located [here](link pending).
 * gritter
 * Custom scaffold templates
 * Navbar partial and helpers
+* English and Portuguese (Br) locales setup
 
 ### What it will do:
 
@@ -53,3 +54,11 @@ source "https://rails-assets.org" do
   gem "rails-assets-tether"
 end
 ```
+
+### Why I built this
+I found myself having to make several changes to the rails applications I was building in order to accommodate for i18n and the different locales. There was also adding bootstrap, devise, and rspec everytime, with their configurations. There were also some steps needed to deploy to heroku.
+
+While none of these steps were particularly complicated or time consuming, I thought it would be a nice exercise to automate them. The result is a very basic app with authentication, deployed to heroku, which can be built upon using TDD (RSpec).
+
+### Contribute
+Bug reports and pull requests are welcome! This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
