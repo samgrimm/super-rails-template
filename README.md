@@ -1,6 +1,8 @@
 ## SuperMegaUltra Rails App Generator Template!
 
-This app was created using the template located [here](link pending).
+This app was created using the template located [here](https://github.com/samgrimm/super-rails-template).
+
+To see an example app built with this template [click here](https://sam-sample-blog.herokuapp.com/)
 
 ### How to use it:
 
