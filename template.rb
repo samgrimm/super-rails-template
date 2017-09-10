@@ -1,19 +1,30 @@
+#test gems:
+
 gem 'rspec-rails', '~> 3.5', '>= 3.5.2', group: ["test", "development"]
-gem 'capybara', '~> 2.12', '>= 2.12.1', group: ["test", "development"]
 gem 'database_cleaner', '~> 1.5', '>= 1.5.3', group: ["test", "development"]
 gem 'factory_girl_rails', '~> 4.8', group: ["test", "development"]
-gem 'friendly_id', '~> 5.1.0'
-gem 'bootstrap', '~>4.0.0.alpha6'
+
+# Design and UI gems:
+
+gem 'bootstrap', '~>4.0.0.beta'
+gem 'popper_js', '~> 1.11.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
-gem 'jquery-ui-rails', '~>6.0', '>=6.0.1'
-gem 'dotenv-rails', '~>2.1', '>=2.1.2'
 gem 'gritter', '~>1.2'
-gem 'rails-i18n', '~> 5.0', '>= 5.0.3'
-gem 'i18n-tasks', '~>0.9.8'
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '~>6.0', '>=6.0.1'
+
+# Heroku gems
+
+gem 'dotenv-rails', '~>2.1', '>=2.1.2'
 gem 'rails_12factor'
 
+#I18n Gems
+gem 'rails-i18n', '~> 5.0', '>= 5.0.3'
+
+#Start RSpec
 rails_command("generate rspec:install")
 
+#Running Devise
 if yes?("Would you like to install Devise?")
   gem 'devise', '~>4.2'
   generate "devise:install"
@@ -23,6 +34,8 @@ if yes?("Would you like to install Devise?")
   directory "~/workspace/templates/RailsTemplates/app/views/devise", "app/views/devise"
 end
 
+#remove old files
+
 remove_file  "app/assets/stylesheets/application.css"
 remove_file  "app/assets/stylesheets/application.js"
 remove_file  "spec/rails_helper.rb"
@@ -30,15 +43,22 @@ remove_file  "spec/spec_helper.rb"
 remove_file  "app/controllers/application_controller.rb"
 remove_file  "app/helpers/application_helper.rb"
 remove_file  "app/views/layouts/application.html.erb"
+
+# add new files
+#locale and i18n
 directory "~/workspace/templates/RailsTemplates/locales", "config/locales"
-copy_file  "~/workspace/templates/RailsTemplates/application_controller.rb","app/controllers/application_controller.rb"
+copy_file "~/workspace/templates/RailsTemplates/locales/devise.en.yml", "config/locales/devise.en.yml"
+copy_file "~/workspace/templates/RailsTemplates/locales/en.yml", "config/locales/en.yml"
+copy_file "~/workspace/templates/RailsTemplates/locales/devise.pt.yml", "config/locales/devise.pt.yml"
+copy_file "~/workspace/templates/RailsTemplates/locales/pt.yml", "config/locales/pt.yml"
 copy_file "~/workspace/templates/RailsTemplates/i18n.rb", "config/initializers/i18n.rb"
+
+copy_file  "~/workspace/templates/RailsTemplates/application_controller.rb","app/controllers/application_controller.rb"
 copy_file "~/workspace/templates/RailsTemplates/rails_helper.rb", "spec/rails_helper.rb"
 copy_file "~/workspace/templates/RailsTemplates/spec_helper.rb", "spec/spec_helper.rb"
 copy_file "~/workspace/templates/RailsTemplates/setup_mail.rb", "config/initializers/setup_mail.rb"
 copy_file "~/workspace/templates/RailsTemplates/application.js", "app/assets/javascripts/application.js"
 copy_file "~/workspace/templates/RailsTemplates/application.scss", "app/assets/stylesheets/application.scss"
-copy_file "~/workspace/templates/RailsTemplates/i18n-tasks.yml", "config/i18n-tasks.yml"
 copy_file "~/workspace/templates/RailsTemplates/application_helper.rb", "app/helpers/application_helper.rb"
 copy_file "~/workspace/templates/RailsTemplates/application.html.erb", "app/views/layouts/application.html.erb"
 copy_file "~/workspace/templates/RailsTemplates/nav.html.erb", "app/views/shared/_nav.html.erb"
@@ -70,7 +90,7 @@ end
 if yes?("Would you like to start off with a scaffold?")
   scaffold_name = ask("What is your scaffold name?")
   lower_scaffold = scaffold_name.pluralize.downcase.to_sym
-  scaffold_attrs = ask("What are the scaffold attrs? (list them as you would in your generator)")
+  scaffold_attrs = ask("What are the scaffold attrs? (list them as you would in your generator, you can even do user:references)")
   scaffold_params = "#{scaffold_name} #{scaffold_attrs}"
   generate :scaffold, scaffold_params
 end
@@ -95,13 +115,8 @@ RUBY
 end
 
 after_bundle do
-  rails_command("generate friendly_id")
   rails_command("db:create")
   rails_command("db:migrate")
-  locales = ask("What localed do you want to add to this app? (Comma-separated list of locale(s) to process)")
-  inside("") do
-    run("i18n-tasks add-missing --locales #{locales}")
-  end
   git :init
   git add: "."
   git commit: %Q{ -m 'Initial commit' }
